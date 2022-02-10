@@ -24,7 +24,7 @@ public class GameplayController : MonoBehaviour
     /// </summary>
     public void Init()
     {
-        Debug.Log("враг");
+        
         player = GameObject.FindWithTag("Player");
         playerHp = player.GetComponent<Player>().MentalHealth;
         playerDamagePerClick = player.GetComponent<Player>().DamagePerClick;
@@ -45,11 +45,6 @@ public class GameplayController : MonoBehaviour
     /// </summary>
     public void DamageEnemyOnClick()
     {
-
-        if(enemy != null)
-        {
-            Debug.Log("дамажим врага");
-        }
         enemy.GetComponent<Enemy>().EnemyHealth -= playerDamagePerClick;
         Debug.Log(enemy.GetComponent<Enemy>().EnemyHealth);
     }
