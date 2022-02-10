@@ -24,6 +24,7 @@ public class GameplayController : MonoBehaviour
     /// </summary>
     public void Init()
     {
+        Debug.Log("враг");
         player = GameObject.FindWithTag("Player");
         playerHp = player.GetComponent<Player>().MentalHealth;
         playerDamagePerClick = player.GetComponent<Player>().DamagePerClick;
@@ -31,6 +32,7 @@ public class GameplayController : MonoBehaviour
 
     private void Update()
     {
+
         if (gameController.GetComponent<GameController>().isGameStarted)
         {
             enemy = GameObject.FindWithTag("Enemy");

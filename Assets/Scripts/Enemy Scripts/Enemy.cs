@@ -38,6 +38,6 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void Init()
     {
-        enemyHealth = 40;
+        EnemyHealth = 40;
     }
 }
