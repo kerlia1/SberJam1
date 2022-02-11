@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameplayController : MonoBehaviour
+public class InterfaceController : MonoBehaviour
 {
     //Объекты, через которые проходит взаимодействие
     GameObject player;
@@ -24,7 +24,7 @@ public class GameplayController : MonoBehaviour
     /// </summary>
     public void Init()
     {
-        
+
         player = GameObject.FindWithTag("Player");
         playerHp = player.GetComponent<Player>().MentalHealth;
         playerDamagePerClick = player.GetComponent<Player>().DamagePerClick;
@@ -39,5 +39,5 @@ public class GameplayController : MonoBehaviour
     }
 
 
-    
+
 }
