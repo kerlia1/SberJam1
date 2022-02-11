@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public static class DahaHolder
+public static class DataHolder
 {
     /// <summary>
     /// Переменная для хранения здоровья игрока между сценами.

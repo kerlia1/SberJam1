@@ -39,14 +39,14 @@ public class GameController : MonoBehaviour
     void SavePlayerParams()
     {
         Debug.Log("Сохраняем данные");
-        DahaHolder.playerMentalHealth = player.GetComponent<Player>().MentalHealth;
-        DahaHolder.playerMoney = player.GetComponent<Player>().Money;
+        DataHolder.playerMentalHealth = player.GetComponent<Player>().MentalHealth;
+        DataHolder.playerMoney = player.GetComponent<Player>().Money;
     }
 
     void ChangePlayerParams()
     {
-        player.GetComponent<Player>().MentalHealth = DahaHolder.playerMentalHealth;
-        player.GetComponent<Player>().Money = DahaHolder.playerMoney;
+        player.GetComponent<Player>().MentalHealth = DataHolder.playerMentalHealth;
+        player.GetComponent<Player>().Money = DataHolder.playerMoney;
     }
     
 
