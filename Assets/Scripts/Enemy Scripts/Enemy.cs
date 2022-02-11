@@ -6,8 +6,6 @@ public class Enemy : MonoBehaviour
     //Диапазон здоровья врага, нужно посчитать, сейчас значения взяты от балды
     //Здоровье должно быть кратно 5, поэтому значения маленькие, при инициализации
     // они скалируются (200 + 10-15{%} для прогрессии)
-    private int lowerHealthBound = 10;
-    private int higherHealthBound = 80;
 
     private float enemyHealth;
     /// <summary>
@@ -39,7 +37,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void Init()
     {
-        EnemyHealth = 10;
+        EnemyHealth = 40;
     }
 
     private void Update()
@@ -47,6 +45,7 @@ public class Enemy : MonoBehaviour
         if(enemyHealth <= 0)
         {
             Destroy(gameObject);
+
         }
     }
 }

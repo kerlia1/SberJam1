@@ -8,7 +8,6 @@ public class GameController : MonoBehaviour
 
     [SerializeField] GameObject enemy;
 
-    int[] orderOfEnemy = { 1, 2, 3, 4 };
     [SerializeField] List<GameObject> enemies;
 
     GameObject tempEnemy;
@@ -17,7 +16,6 @@ public class GameController : MonoBehaviour
     private int countOfEnemy = 0;
     // Начало игры
     public bool isGameStarted = false;
-    public bool playerInHub = false;
 
 
 
@@ -29,7 +27,7 @@ public class GameController : MonoBehaviour
     // Создаем самого первого врага.
     private void Start()
     {
-        
+
     }
 
 
@@ -40,6 +38,7 @@ public class GameController : MonoBehaviour
         SpawnEnemy();
         // Запуск таймера
         gameObject.GetComponent<Timer>().StartTimer();
+
     }
 
     /// <summary>
@@ -49,7 +48,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     void SpawnEnemy()
     {
-        if (!playerInHub && isGameStarted)
+        if (isGameStarted)
         {
             if (enemy.GetComponent<Enemy>().EnemyHealth == 0 && countOfEnemy <= 3)
             {
@@ -61,8 +60,6 @@ public class GameController : MonoBehaviour
             ExitToHub();
         }
     }
-
-
 
     /// <summary>
     /// Тут будем создавать врага после самого первого старта(повешу на условие позже)
@@ -77,14 +74,10 @@ public class GameController : MonoBehaviour
     }
 
 
-    void ExitToHub()
-    {
-        playerInHub = true;
-        SceneManager.LoadScene("HubScene");
-        // Тут будет переход в хаб и смена переменных
-    }
 
-     public int count = 0;
+
+
+    public int count = 0;
     /// <summary>
     /// Наносит урон при клике
     /// </summary>
@@ -93,14 +86,38 @@ public class GameController : MonoBehaviour
         enemies[count].GetComponent<Enemy>().EnemyHealth -= playerDamagePerClick;
         Debug.Log($"Текущее здоровье врага: {enemies[count].GetComponent<Enemy>().EnemyHealth}");
 
-        if(enemies[count].GetComponent<Enemy>().EnemyHealth == 0)
+        if (enemies[count].GetComponent<Enemy>().EnemyHealth == 0)
         {
             enemies.RemoveAt(0);
-            if(enemies.Count == 0)
+            if (enemies.Count == 0)
             {
                 ExitToHub();
             }
         }
     }
 
+
+    /// <summary>
+    /// Принимаем состояние(победа/поражение)
+    /// </summary>
+    /// <param name="param"></param>
+    public void ExitToHub(string param)
+    {
+        switch (param)
+        {
+            case "lose":
+                Debug.Log("You loser!");
+                break;
+            case "win":
+                break;
+        }
+        SceneManager.LoadScene("HubScene");
+    }
+
+
+    void ExitToHub()
+    {
+        SceneManager.LoadScene("HubScene");
+        // Тут будет переход в хаб и смена переменных
+    }
 }

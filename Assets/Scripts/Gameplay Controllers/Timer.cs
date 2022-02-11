@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
     public float timerStart = 40f;
-    [SerializeField] Text timerText;
+    public Text timerText;
 
     public bool Lose = false;
 
@@ -22,6 +23,7 @@ public class Timer : MonoBehaviour
         timerText.text = Mathf.Round(timerStart).ToString();
         if (timerStart <= 0)
         {
+            gameObject.GetComponent<GameController>().ExitToHub("lose");
             Lose = true;
         }
     }
