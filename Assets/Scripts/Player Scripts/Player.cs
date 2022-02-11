@@ -2,9 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
-{
-    
+public class Player : MonoBehaviour {
+
+    private int money = 1000;
+    /// <summary>
+    /// Деньги персонажа
+    /// </summary>
+    public int Money { get => money; set => money = value; }
+
+    private int maxMentalHealth = 50;
+    /// <summary>
+    /// Максимальное здоровье персонажа.
+    /// </summary>
+    public int MaxMentalHealth { get => maxMentalHealth; set => maxMentalHealth = value; }
+
     private int mentalHealth = 50;
     /// <summary>
     /// Здоровье персонажа. Оно будет снижаться после каждого проекта и

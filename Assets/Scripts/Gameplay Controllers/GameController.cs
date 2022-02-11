@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-
+    [SerializeField] private GameObject player;
     [SerializeField] GameObject enemy;
 
     [SerializeField] List<GameObject> enemies;
@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
     {
         if (isGameStarted)
         {
-            if (enemy.GetComponent<Enemy>().EnemyHealth == 0 && countOfEnemy <= 3)
+            if (enemy.GetComponent<Enemy>().EnemyHealth <= 0 && countOfEnemy <= 3)
             {
                 CreateEnemy();
             }
@@ -83,10 +83,10 @@ public class GameController : MonoBehaviour
     /// </summary>
     public void DamageEnemyOnClick()
     {
-        enemies[count].GetComponent<Enemy>().EnemyHealth -= playerDamagePerClick;
+        enemies[count].GetComponent<Enemy>().EnemyHealth -= player.GetComponent<Player>().DamagePerClick;
         Debug.Log($"Текущее здоровье врага: {enemies[count].GetComponent<Enemy>().EnemyHealth}");
 
-        if (enemies[count].GetComponent<Enemy>().EnemyHealth == 0)
+        if (enemies[count].GetComponent<Enemy>().EnemyHealth <= 0)
         {
             enemies.RemoveAt(0);
             if (enemies.Count == 0)

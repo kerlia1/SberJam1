@@ -8,11 +8,7 @@ public class InterfaceController : MonoBehaviour
     GameObject player;
     GameObject enemy;
     [SerializeField] GameObject gameController;
-
-    // Тут переменные связанные с классом игрок
-    int playerHp;
-    private float playerDamagePerClick;
-
+    
 
     private void Awake()
     {
@@ -24,10 +20,7 @@ public class InterfaceController : MonoBehaviour
     /// </summary>
     public void Init()
     {
-
         player = GameObject.FindWithTag("Player");
-        playerHp = player.GetComponent<Player>().MentalHealth;
-        playerDamagePerClick = player.GetComponent<Player>().DamagePerClick;
     }
 
     private void Update()
