@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         isGameStarted = true;
+        ChangePlayerParams();
     }
 
 
@@ -34,7 +35,19 @@ public class GameController : MonoBehaviour
         // Запуск таймера
         gameObject.GetComponent<Timer>().StartTimer();
     }
-    
+
+    void SavePlayerParams()
+    {
+        Debug.Log("Сохраняем данные");
+        DahaHolder.playerMentalHealth = player.GetComponent<Player>().MentalHealth;
+        DahaHolder.playerMoney = player.GetComponent<Player>().Money;
+    }
+
+    void ChangePlayerParams()
+    {
+        player.GetComponent<Player>().MentalHealth = DahaHolder.playerMentalHealth;
+        player.GetComponent<Player>().Money = DahaHolder.playerMoney;
+    }
     
 
     /// <summary>
@@ -53,7 +66,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            ExitToHub();
+            ExitToHub("win");
         }
     }
 
@@ -87,7 +100,7 @@ public class GameController : MonoBehaviour
             enemies.RemoveAt(0);
             if (enemies.Count == 0)
             {
-                ExitToHub();
+                ExitToHub("win");
             }
         }
     }
@@ -106,14 +119,10 @@ public class GameController : MonoBehaviour
                 break;
             case "win":
                 break;
-        }        
+        }
+        
+        SavePlayerParams();
         SceneManager.LoadScene("HubScene");
     }
 
-
-    void ExitToHub()
-    {
-        SceneManager.LoadScene("HubScene");
-        // Тут будет переход в хаб и смена переменных
-    }
 }
