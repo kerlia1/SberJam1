@@ -14,21 +14,8 @@ namespace Player_Scripts {
         private void Awake() {
             player = GetComponent<Player>();
         }
-        
-        public IEnumerator BuffDPC(float multiplier, float seconds, int buttonIndex) {
-            player.DamagePerClick *= multiplier;
-            buttons[buttonIndex].GetComponent<Button>().interactable = false;
-            Debug.Log($"Урон по клику: {player.DamagePerClick}");
-            
-            yield return new WaitForSeconds(seconds);
-
-            player.DamagePerClick /= multiplier;
-            buttons[buttonIndex].GetComponent<Button>().interactable = true;
-            Debug.Log($"Урон по клику {player.DamagePerClick}");
-        }
 
         //1. Купить готовые решения (DamagePerClick * 3, Timer = 10s, Cost = 100$)
-        //3. Бахнуть энергос (DamagePerClick * 2, Timer = 10s, Cost = 25$)
         public void BuySolution() {
             if (player.Money >= 100) {
                 player.Money -= 100;
@@ -40,6 +27,7 @@ namespace Player_Scripts {
             }
         }
         
+        //2. Бахнуть энергос (DamagePerClick * 2, Timer = 10s, Cost = 25$)
         public void DrinkEnergy() {
             if (player.Money >= 25) {
                 player.Money -= 25;
@@ -51,7 +39,7 @@ namespace Player_Scripts {
             }
         }
 
-        //2. Выпить пива (MentalHealth + 5, Cost = 30$)
+        //3. Выпить пива (MentalHealth + 5, Cost = 30$)
         public void DrinkBeer() {
             if (player.Money >= 30) {
                 player.Money -= 30;
@@ -86,22 +74,33 @@ namespace Player_Scripts {
             }
         }
 
+        //6. Закрыть задачу (Закончить задачу??, Cost = 300$)
+        public void BuyWin() {
+            gameController.GetComponent<GameController>().ExitToHub("win");
+        }
+        
+        //Корутина, которая умножает урон по клику на multiplier, после чего возвращает его в исходное значение
+        private IEnumerator BuffDPC(float multiplier, float seconds, int buttonIndex) {
+            player.DamagePerClick *= multiplier;
+            buttons[buttonIndex].GetComponent<Button>().interactable = false;
+            Debug.Log($"Урон по клику: {player.DamagePerClick}");
+            
+            yield return new WaitForSeconds(seconds);
+
+            player.DamagePerClick /= multiplier;
+            buttons[buttonIndex].GetComponent<Button>().interactable = true;
+            Debug.Log($"Урон по клику {player.DamagePerClick}");
+        }
+        
+        //Корутина, которая увеличивает пассивный урон в секунду на какое-то значение, потом возвращает назад
         private IEnumerator BuffDPS(float previous, float temporary, float seconds) {
             player.DamagePerSecond = temporary;
-            buttons[4].GetComponent<Button>().interactable = false;
             Debug.Log($"Пассивный дамаг: {player.DamagePerSecond}");
             
             yield return new WaitForSeconds(seconds);
 
             player.DamagePerSecond = previous;
-            buttons[4].GetComponent<Button>().interactable = true;
             Debug.Log($"Пассивный дамаг: {player.DamagePerSecond}");
-        }
-        
-
-        //6. Закрыть задачу (Закончить задачу??, Cost = 300$)
-        public void BuyWin() {
-            gameController.GetComponent<GameController>().ExitToHub("win");
         }
     }
 }

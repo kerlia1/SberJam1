@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] GameObject enemy;
 
-    [SerializeField] List<GameObject> enemies;
+    [SerializeField] public List<GameObject> enemies;
 
     GameObject tempEnemy;
 
