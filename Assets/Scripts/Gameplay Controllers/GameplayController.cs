@@ -32,7 +32,6 @@ public class GameplayController : MonoBehaviour
 
     private void Update()
     {
-
         if (gameController.GetComponent<GameController>().isGameStarted)
         {
             enemy = GameObject.FindWithTag("Enemy");
@@ -40,12 +39,5 @@ public class GameplayController : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Наносит урон при клике
-    /// </summary>
-    public void DamageEnemyOnClick()
-    {
-        enemy.GetComponent<Enemy>().EnemyHealth -= playerDamagePerClick;
-        Debug.Log(enemy.GetComponent<Enemy>().EnemyHealth);
-    }
+    
 }

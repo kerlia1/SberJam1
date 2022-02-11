@@ -515,7 +515,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 663641421759031515, guid: 47b9b6b10a3b78b4cabcf2cd4cca1fbd, type: 3}
+  enemies: []
   isGameStarted: 0
+  playerInHub: 0
+  count: 0
 --- !u!1001 &1690204752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -660,8 +663,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559323980}
-        m_TargetAssemblyTypeName: GameplayController, Assembly-CSharp
+      - m_Target: {fileID: 1559323982}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
         m_MethodName: DamageEnemyOnClick
         m_Mode: 1
         m_Arguments:
