@@ -21,10 +21,19 @@ public class Timer : MonoBehaviour
     {
         timerStart -= Time.deltaTime;
         timerText.text = Mathf.Round(timerStart).ToString();
+
+        float curTime = Time.deltaTime;
+        
+
         if (timerStart <= 0)
         {
             gameObject.GetComponent<GameController>().ExitToHub("lose");
             Lose = true;
         }
+    }
+
+    IEnumerator DmgPerSec()
+    {
+        yield return new WaitForSecondsRealtime(1);
     }
 }
