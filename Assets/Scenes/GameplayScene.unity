@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 223703547}
   - component: {fileID: 223703546}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: ' Energizer'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -357,6 +357,7 @@ RectTransform:
   - {fileID: 1723992103}
   - {fileID: 1838213026}
   - {fileID: 1058426770}
+  - {fileID: 917788378}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -525,6 +526,86 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859780478}
   m_CullTransparentMesh: 1
+--- !u!1 &917788377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 917788378}
+  - component: {fileID: 917788380}
+  - component: {fileID: 917788379}
+  m_Layer: 5
+  m_Name: playerHp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &917788378
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917788377}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 241686438}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -160, y: 50}
+  m_SizeDelta: {x: 320, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &917788379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917788377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 80
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 8
+    m_MaxSize: 80
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &917788380
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917788377}
+  m_CullTransparentMesh: 1
 --- !u!1 &934908640
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +699,7 @@ GameObject:
   - component: {fileID: 1058426772}
   - component: {fileID: 1058426771}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: Win
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1113,7 +1194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3548f6de32724aadb07c99f22b11ab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1690204753}
   gameController: {fileID: 1559323979}
+  playerHp: {fileID: 917788379}
 --- !u!114 &1559323984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1126,6 +1209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a75c9b2001c5248ea89f2f40d8300573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1690204753}
   timerStart: 40
   timerText: {fileID: 934908641}
   Lose: 0
@@ -1224,7 +1308,7 @@ GameObject:
   - component: {fileID: 1723992105}
   - component: {fileID: 1723992104}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: HardMode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1358,7 +1442,7 @@ GameObject:
   - component: {fileID: 1734487717}
   - component: {fileID: 1734487716}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: BeerTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1839,7 +1923,7 @@ GameObject:
   - component: {fileID: 1838213028}
   - component: {fileID: 1838213027}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Indus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
