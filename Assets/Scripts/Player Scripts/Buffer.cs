@@ -14,6 +14,18 @@ namespace Player_Scripts {
         private void Awake() {
             player = GetComponent<Player>();
         }
+        
+        public IEnumerator BuffDPC(float multiplier, float seconds, int buttonIndex) {
+            player.DamagePerClick *= multiplier;
+            buttons[buttonIndex].GetComponent<Button>().interactable = false;
+            Debug.Log($"Урон по клику: {player.DamagePerClick}");
+            
+            yield return new WaitForSeconds(seconds);
+
+            player.DamagePerClick /= multiplier;
+            buttons[buttonIndex].GetComponent<Button>().interactable = true;
+            Debug.Log($"Урон по клику {player.DamagePerClick}");
+        }
 
         //1. Купить готовые решения (DamagePerClick * 3, Timer = 10s, Cost = 100$)
         //3. Бахнуть энергос (DamagePerClick * 2, Timer = 10s, Cost = 25$)
@@ -21,8 +33,7 @@ namespace Player_Scripts {
             if (player.Money >= 100) {
                 player.Money -= 100;
                 Debug.Log($"У игрока теперь денег: {player.Money}");
-                StartCoroutine(BuffDPC(player.DamagePerClick,
-                    player.DamagePerClick * 3, 10f, 0));
+                StartCoroutine(BuffDPC(3, 10f, 0));
             }
             else {
                 Debug.Log($"У тебя нет денег, лох");
@@ -33,24 +44,11 @@ namespace Player_Scripts {
             if (player.Money >= 25) {
                 player.Money -= 25;
                 Debug.Log($"У игрока теперь денег: {player.Money}");
-                StartCoroutine(BuffDPC(player.DamagePerClick,
-                    player.DamagePerClick * 2, 10f, 1));
+                StartCoroutine(BuffDPC(2, 10f, 1));
             }
             else {
                 Debug.Log($"У тебя нет денег, лох");
             }
-        }
-
-        public IEnumerator BuffDPC(float previous, float temporary, float seconds, int buttonIndex) {
-            player.DamagePerClick = temporary;
-            buttons[buttonIndex].GetComponent<Button>().interactable = false;
-            Debug.Log($"Урон по клику: {player.DamagePerClick}");
-            
-            yield return new WaitForSeconds(seconds);
-
-            player.DamagePerClick = previous;
-            buttons[buttonIndex].GetComponent<Button>().interactable = true;
-            Debug.Log($"Урон по клику {player.DamagePerClick}");
         }
 
         //2. Выпить пива (MentalHealth + 5, Cost = 30$)
@@ -76,8 +74,7 @@ namespace Player_Scripts {
         //4. Войти в HARDMODE (DamagePerClick * 3, Timer = 10s, Cost = MentalHealth - 7)
         public void HardMode() {
             player.MentalHealth -= 7;
-            StartCoroutine(BuffDPC(player.DamagePerClick,
-                player.DamagePerClick * 3, 10f, 3));
+            StartCoroutine(BuffDPC(3, 10f, 3));
         }
         
         //5. Нанять индуса (DamagePerSecond + 0.5, Timer = 120s, Cost = 200$)
