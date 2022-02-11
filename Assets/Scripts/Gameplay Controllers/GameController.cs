@@ -29,11 +29,25 @@ public class GameController : MonoBehaviour
     // Создаем самого первого врага.
     private void Start()
     {
-
+        
     }
 
 
     private void Update()
+    {
+
+        // Создание врагов
+        SpawnEnemy();
+        // Запуск таймера
+        gameObject.GetComponent<Timer>().StartTimer();
+    }
+
+    /// <summary>
+    /// Спавн врагов
+    /// запускается вместе с переходом на сцену
+    /// по текущим параметрам врагов
+    /// </summary>
+    void SpawnEnemy()
     {
         if (!playerInHub && isGameStarted)
         {
@@ -46,14 +60,6 @@ public class GameController : MonoBehaviour
         {
             ExitToHub();
         }
-
-    }
-
-
-    void CreateFirstEnemy()
-    {
-        Instantiate(enemy);
-        countOfEnemy++;
     }
 
 
