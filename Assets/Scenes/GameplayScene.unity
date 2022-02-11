@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 223703547}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1690204754}
+        m_TargetAssemblyTypeName: Player_Scripts.Buffer, Assembly-CSharp
+        m_MethodName: DrinkEnergy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &223703547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,10 +799,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21aad6ecdc23747f4ac75c82dff3fcde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1690204753}
   enemy: {fileID: 663641421759031515, guid: 47b9b6b10a3b78b4cabcf2cd4cca1fbd, type: 3}
   enemies: []
   isGameStarted: 0
-  playerInHub: 0
   count: 0
 --- !u!114 &1559323983
 MonoBehaviour:
@@ -894,6 +906,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6543b62f9c60441da783543f369070f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 1836538563}
+  - {fileID: 223703544}
+  - {fileID: 1734487714}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  gameController: {fileID: 1559323979}
 --- !u!1 &1734487714
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,18 +998,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1690204753}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1690204754}
+        m_TargetAssemblyTypeName: Player_Scripts.Buffer, Assembly-CSharp
+        m_MethodName: DrinkBeer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1734487717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1245,13 +1265,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1690204753}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1690204754}
+        m_TargetAssemblyTypeName: Player_Scripts.Buffer, Assembly-CSharp
+        m_MethodName: BuySolution
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
