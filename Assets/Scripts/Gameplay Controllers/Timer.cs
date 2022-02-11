@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
+    [SerializeField] GameObject player;
+
     public float timerStart = 40f;
     public Text timerText;
 
@@ -15,6 +17,8 @@ public class Timer : MonoBehaviour
     void Start()
     {
         timerText.text = timerStart.ToString();
+        
+        StartCoroutine(mentalDmgPerSec());
     }
 
     public void StartTimer()
@@ -22,9 +26,7 @@ public class Timer : MonoBehaviour
         timerStart -= Time.deltaTime;
         timerText.text = Mathf.Round(timerStart).ToString();
 
-        float curTime = Time.deltaTime;
         
-
         if (timerStart <= 0)
         {
             gameObject.GetComponent<GameController>().ExitToHub("lose");
@@ -32,8 +34,13 @@ public class Timer : MonoBehaviour
         }
     }
 
-    IEnumerator DmgPerSec()
+    IEnumerator mentalDmgPerSec()
     {
-        yield return new WaitForSecondsRealtime(1);
+        while (true)
+        {
+            yield return new WaitForSecondsRealtime(5);
+            player.GetComponent<Player>().MentalHealth -= 1;
+        }
+        yield return null;
     }
 }

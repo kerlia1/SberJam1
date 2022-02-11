@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InterfaceController : MonoBehaviour
 {
     //Объекты, через которые проходит взаимодействие
-    GameObject player;
+    [SerializeField] GameObject player;
     GameObject enemy;
     [SerializeField] GameObject gameController;
+    [SerializeField] Text playerHp;
     
 
     private void Awake()
-    {
+    {        
         Init();
+        //playerHp.text = PlayerPrefs.GetInt("MentalHealt").ToString();
     }
 
     /// <summary>
@@ -20,15 +23,17 @@ public class InterfaceController : MonoBehaviour
     /// </summary>
     public void Init()
     {
-        player = GameObject.FindWithTag("Player");
+        //player = GameObject.FindWithTag("Player");
     }
 
-    private void Update()
+    private void Start()
     {
-        if (gameController.GetComponent<GameController>().isGameStarted)
-        {
-            enemy = GameObject.FindWithTag("Enemy");
-        }
+        playerHp.text = player.GetComponent<Player>().MentalHealth.ToString();
+    }
+
+    void Update()
+    {
+        playerHp.text = player.GetComponent<Player>().MentalHealth.ToString();
     }
 
 

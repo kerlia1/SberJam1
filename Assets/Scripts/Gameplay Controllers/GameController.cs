@@ -24,22 +24,18 @@ public class GameController : MonoBehaviour
         isGameStarted = true;
     }
 
-    // Создаем самого первого врага.
-    private void Start()
-    {
 
-    }
 
 
     private void Update()
     {
-
         // Создание врагов
         SpawnEnemy();
         // Запуск таймера
         gameObject.GetComponent<Timer>().StartTimer();
-
     }
+    
+    
 
     /// <summary>
     /// Спавн врагов
@@ -110,7 +106,7 @@ public class GameController : MonoBehaviour
                 break;
             case "win":
                 break;
-        }
+        }        
         SceneManager.LoadScene("HubScene");
     }
 
