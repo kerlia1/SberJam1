@@ -76,7 +76,14 @@ namespace Player_Scripts {
 
         //6. Закрыть задачу (Закончить задачу??, Cost = 300$)
         public void BuyWin() {
-            gameController.GetComponent<GameController>().ExitToHub("win");
+            if (player.Money >= 300) {
+                player.Money -= 300;
+                DataHolder.playerMoney -= 300;
+                gameController.GetComponent<GameController>().ExitToHub("win");
+            }
+            else {
+                Debug.Log($"У тебя нет денег, лох");
+            }
         }
         
         //Корутина, которая умножает урон по клику на multiplier, после чего возвращает его в исходное значение
