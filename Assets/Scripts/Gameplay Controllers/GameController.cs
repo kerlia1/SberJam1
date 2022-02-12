@@ -114,12 +114,21 @@ public class GameController : MonoBehaviour
         switch (param)
         {
             case "lose":
-                Debug.Log("You loser!");
+                player.GetComponent<Player>().MentalHealth -= 10;
                 break;
             case "win":
+                player.GetComponent<Player>().Money += 100;
+                int mentalHealth = player.GetComponent<Player>().MentalHealth + 5;
+                if (mentalHealth > player.GetComponent<Player>().MaxMentalHealth)
+                {
+                    player.GetComponent<Player>().MentalHealth = player.GetComponent<Player>().MaxMentalHealth;
+                }
+                else
+                {
+                    player.GetComponent<Player>().MentalHealth = mentalHealth;
+                }
                 break;
         }
-        
         SavePlayerParams();
         SceneManager.LoadScene("HubScene");
     }
