@@ -3,29 +3,18 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    //Диапазон здоровья врага, нужно посчитать, сейчас значения взяты от балды
-    //Здоровье должно быть кратно 5, поэтому значения маленькие, при инициализации
-    // они скалируются (200 + 10-15{%} для прогрессии)
-
     private float enemyHealth;
     /// <summary>
     /// Здоровье дедлайна. Снижается при клике и пассивно от улучшений
     /// </summary>
     public float EnemyHealth { get => enemyHealth; set => enemyHealth = value; }
 
+    private float maxEnemyHealth;
 
-    // Зачем?
-    private int timeToDo;
     /// <summary>
-    /// Время, выдаваемое на то, чтобы сделать таску
+    /// Максимальное здоровье дедлайна.
     /// </summary>
-    public int TimeToDo { get => timeToDo; set => timeToDo = value; }
-
-    private string taskName;
-    /// <summary>
-    /// Название таска
-    /// </summary>
-    public string TaskName { get => taskName; set => taskName = value; }
+    public float MaxEnemyHealth { get => maxEnemyHealth; set => maxEnemyHealth = value; }
 
     private void Awake()
     {
@@ -37,7 +26,8 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void Init()
     {
-        EnemyHealth = 40;
+        EnemyHealth = Random.Range(40f, 48f);
+        MaxEnemyHealth = EnemyHealth;
     }
 
     private void Update()

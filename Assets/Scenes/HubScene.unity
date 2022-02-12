@@ -1552,7 +1552,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Text of an upgrade with <sprite index=0>
+  m_text: 'New Project!
 
 '
   m_isRightToLeft: 0
@@ -2924,7 +2924,7 @@ GameObject:
   m_Component:
   - component: {fileID: 942550132}
   m_Layer: 5
-  m_Name: Upgrade
+  m_Name: New Project
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3010,7 +3010,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <sprite index=0>300
+  m_text: Start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0cd075d41884cea4c90e6e34e0682ab5, type: 2}
   m_sharedMaterial: {fileID: -8234491953577330657, guid: 0cd075d41884cea4c90e6e34e0682ab5, type: 2}
@@ -5185,6 +5185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e5ec96512d064c78994b139a7179eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 1595732732}
+  playerHp: {fileID: 1798388733}
+  moneyText: {fileID: 895458727}
 --- !u!4 &1924075036
 Transform:
   m_ObjectHideFlags: 0
@@ -5367,7 +5370,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2073807578}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1924075035}
+        m_TargetAssemblyTypeName: HubController, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2073807578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5388,7 +5403,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6fe482065f541e947a1412c39964b183, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 27942521cf3801e4288124758a6ba567, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
