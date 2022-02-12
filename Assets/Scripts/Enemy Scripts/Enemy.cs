@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void Init()
     {
-        EnemyHealth = Random.Range(40f, 48f);
+        EnemyHealth = Random.Range(80f, 128f);
         MaxEnemyHealth = EnemyHealth;
     }
 

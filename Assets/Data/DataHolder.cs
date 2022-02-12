@@ -6,7 +6,7 @@ public static class DataHolder
     /// <summary>
     /// Переменная для хранения здоровья игрока между сценами.
     /// </summary>
-    public static int playerMentalHealth = 50;
+    public static int playerMentalHealth = 32;
 
     /// <summary>
     /// Деньги игрока.

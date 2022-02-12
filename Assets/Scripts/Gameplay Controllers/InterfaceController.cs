@@ -9,6 +9,7 @@ public class InterfaceController : MonoBehaviour {
     //Объекты, через которые проходит взаимодействие
     [SerializeField] Player player;
     [SerializeField] GameController gameController;
+    [SerializeField] private MessageHandler messageHandler;
 
 
     //Объекты интерфейса, с которыми мы взаимодействуем
@@ -38,6 +39,7 @@ public class InterfaceController : MonoBehaviour {
     };
 
     private int enemyIndex;
+    private bool enemiesSpawned;
 
     //Переменная, нужная для того, чтобы смотреть, когда сменился враг
     private int prevCount = 4;
@@ -52,15 +54,18 @@ public class InterfaceController : MonoBehaviour {
     /// </summary>
     public void Init() {
         playerHpBar.maxValue = player.MaxMentalHealth;
-        enemyHpBar.maxValue = 48f;
+        enemyHpBar.maxValue = 128f;
 
         playerHp.text = $"{player.MentalHealth} / {player.MaxMentalHealth}";
         playerHpBar.value = player.MentalHealth;
-        enemyHpBar.value = 48f;
+        enemyHpBar.value = 128f;
         moneyText.text = $"<sprite asset=0> {player.Money}";
     }
 
     void Update() {
+        if (gameController.enemies.Count == 4) {
+            enemiesSpawned = true;
+        }
         
         playerHp.text = $"{player.MentalHealth} / {player.MaxMentalHealth}";
         playerHpBar.value = player.MentalHealth;
@@ -70,10 +75,14 @@ public class InterfaceController : MonoBehaviour {
                 gameController.enemies[0].GetComponent<Enemy>().EnemyHealth;
         }
 
-        if (prevCount != gameController.enemies.Count) {
+        if (enemiesSpawned && prevCount != gameController.enemies.Count) {
             enemyIndex = (enemyIndex + 1) % 4;
+            
             enemyHpBarFill.color = enemyColors[enemyIndex];
             enemyNameText.text = enemyNames[enemyIndex];
+            
+            messageHandler.GeneratePhaseMessage(enemyIndex - 1);
+            
             prevCount = gameController.enemies.Count;
         }
 

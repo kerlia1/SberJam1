@@ -38,7 +38,7 @@ public class Timer : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSecondsRealtime(5);
+            yield return new WaitForSecondsRealtime(3);
             player.GetComponent<Player>().MentalHealth -= 1;
         }
         yield return null;

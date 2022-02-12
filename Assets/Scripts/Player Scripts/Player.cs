@@ -11,13 +11,13 @@ public class Player : MonoBehaviour
     /// </summary>
     public int Money { get => money; set => money = value; }
 
-    private int maxMentalHealth = 50;
+    private int maxMentalHealth = 32;
     /// <summary>
     /// Максимальное здоровье персонажа.
     /// </summary>
     public int MaxMentalHealth { get => maxMentalHealth; set => maxMentalHealth = value; }
 
-    [SerializeField] private int mentalHealth = 50;
+    [SerializeField] private int mentalHealth = 32;
     /// <summary>
     /// Здоровье персонажа. Оно будет снижаться после каждого проекта и
     /// увеличиваться после прохождения ментального лечения.

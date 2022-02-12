@@ -8,6 +8,7 @@ namespace Player_Scripts {
     public class Buffer : MonoBehaviour {
         [SerializeField] private List<GameObject> buttons;
         [SerializeField] private GameObject gameController;
+        [SerializeField] private MessageHandler messageHandler;
 
         private Player player;
 
@@ -20,6 +21,8 @@ namespace Player_Scripts {
             if (player.Money >= 100) {
                 player.Money -= 100;
                 Debug.Log($"У игрока теперь денег: {player.Money}");
+                messageHandler.GenerateBuffMessage(0);
+                
                 StartCoroutine(BuffDPC(3, 10f, 0));
             }
             else {
@@ -32,6 +35,8 @@ namespace Player_Scripts {
             if (player.Money >= 25) {
                 player.Money -= 25;
                 Debug.Log($"У игрока теперь денег: {player.Money}");
+                messageHandler.GenerateBuffMessage(1);
+                
                 StartCoroutine(BuffDPC(2, 10f, 1));
             }
             else {
@@ -53,6 +58,8 @@ namespace Player_Scripts {
 
                 Debug.Log($"Менталка: {player.MentalHealth}");
                 Debug.Log($"У игрока теперь денег: {player.Money}");
+                
+                messageHandler.GenerateBuffMessage(2);
             }
             else {
                 Debug.Log($"У тебя нет денег, лох");
@@ -62,6 +69,8 @@ namespace Player_Scripts {
         //4. Войти в HARDMODE (DamagePerClick * 3, Timer = 10s, Cost = MentalHealth - 7)
         public void HardMode() {
             player.MentalHealth -= 7;
+            messageHandler.GenerateBuffMessage(3);
+            
             StartCoroutine(BuffDPC(3, 10f, 3));
         }
         
@@ -69,6 +78,8 @@ namespace Player_Scripts {
         public void HireIndus() {
             if (player.Money >= 200) {
                 player.Money -= 200;
+                messageHandler.GenerateBuffMessage(4);
+                
                 StartCoroutine(BuffDPS(player.DamagePerSecond,
                     player.DamagePerSecond + 0.5f, 120));
             }
