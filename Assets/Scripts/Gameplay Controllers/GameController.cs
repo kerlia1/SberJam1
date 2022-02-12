@@ -27,7 +27,6 @@ public class GameController : MonoBehaviour
 
 
 
-
     private void Update()
     {
         // Создание врагов
@@ -126,3 +125,5 @@ public class GameController : MonoBehaviour
     }
 
 }
+
+
